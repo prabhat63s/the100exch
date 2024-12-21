@@ -1,0 +1,46 @@
+.header .logoBox {
+  height: 40px;
+}
+
+
+@media (max-width: 768px) {
+  .header.sticky {
+    position: fixed;
+    background-color: #000;
+    top: 0px;
+    z-index: 1000; 
+    width: 100%;
+  }
+  .header .logoBox {
+    height: 40px !important;
+    margin: 0 !important;
+  }
+  .search-wrap {
+    display: none;
+  }
+  .headerLang {
+    display: none !important;
+  }
+  .flexRow {
+    display: flex;
+    justify-content: end !important;
+  }
+  .login-wrap .fa-user,
+  .login-wrap .fa-eye {
+    display: none;
+  }
+  .login-wrap input {
+    display: none;
+  }
+  .loginDemo.bankingTrue {
+    display: none !important;
+  }
+  .menu-wrap {
+    display: none;
+  }
+
+  .gamehall-wrap-simple {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
