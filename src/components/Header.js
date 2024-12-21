@@ -622,6 +622,7 @@ export default function Header() {
                     _ngcontent-mlh-c25
                     className="cursor-pointer"
                     src="./the100exch_files/Welcome756.jpg"
+                    alt=""
                   />
                 </div>
               </div>
@@ -659,10 +660,11 @@ export default function Header() {
                       _ngcontent-mlh-c34
                       src="./the100exch_files/removeicon.png"
                       width={40}
+                      alt=""
                     />
                   </button>
                 </div>
-                <h2 _ngcontent-mlh-c34 className="boxMain" />
+                {/* <h2 _ngcontent-mlh-c34 className="boxMain" /> */}
                 <div _ngcontent-mlh-c34 className="modal-body bodypabal">
                   <div
                     _ngcontent-mlh-c34
@@ -823,7 +825,7 @@ export default function Header() {
                 >
                   <img
                     _ngcontent-mlh-c18
-                    alt
+                    alt=""
                     src="./the100exch_files/ComingSoonPopup.svg"
                     srcSet
                     style={{ width: "100%", borderRadius: 14 }}
@@ -874,6 +876,7 @@ export default function Header() {
                         _ngcontent-mlh-c27
                         src="./the100exch_files/world777logo.png"
                         className="ng-star-inserted"
+                        alt=""
                       />
                     </li>
 
@@ -882,6 +885,7 @@ export default function Header() {
                         _ngcontent-mlh-c27
                         src="./the100exch_files/logo-diamond.png"
                         className="ng-star-inserted"
+                        alt=""
                       />
                     </li>
 
@@ -890,6 +894,7 @@ export default function Header() {
                         _ngcontent-mlh-c27
                         src="./the100exch_files/lotuslogo.png"
                         className="ng-star-inserted"
+                        alt=""
                       />
                     </li>
                   </ul>
@@ -1358,6 +1363,7 @@ export default function Header() {
                   <img
                     _ngcontent-mlh-c38
                     src="./the100exch_files/sky-login-logo.jpg"
+                    alt=""
                   />
                 </div>
                 <form
@@ -1421,7 +1427,7 @@ export default function Header() {
                     </span>
                     <div _ngcontent-mlh-c38 className="forget-div"></div>
                     <dd _ngcontent-mlh-c38>
-                      <a
+                      <Link to=""
                         _ngcontent-mlh-c38
                         className="btn-send"
                         id="loginBoxLoginBtn"
@@ -1432,17 +1438,18 @@ export default function Header() {
                           _ngcontent-mlh-c38
                           className="icon-login"
                           src="./the100exch_files/transparent.gif"
+                          alt=""
                         />
-                      </a>
+                      </Link>
                     </dd>
                     <dd _ngcontent-mlh-c38>
-                      <a
+                      <Link to=""
                         _ngcontent-mlh-c38
                         className="btn-send demoLogin"
                         style={{ marginTop: 0, cursor: "pointer" }}
                       >
                         Login With Demo
-                      </a>
+                      </Link>
                       <app-social-link _ngcontent-mlh-c38 _nghost-mlh-c36>
                         <div
                           _ngcontent-mlh-c36
@@ -1452,7 +1459,7 @@ export default function Header() {
                     </dd>
                   </dl>
                 </form>
-                <a
+                <Link to=""
                   _ngcontent-mlh-c38
                   className="close"
                   data-dismiss="modal"
@@ -1714,6 +1721,7 @@ export default function Header() {
                       _ngcontent-mlh-c32
                       src="./the100exch_files/removeicon.png"
                       width={40}
+                      alt=""
                     />
                   </button>
                 </div>
@@ -1809,6 +1817,7 @@ export default function Header() {
                       _ngcontent-mlh-c33
                       src="./the100exch_files/sky-the100-logo.png"
                       className="ng-star-inserted"
+                      alt=""
                     />
                   </span>
 

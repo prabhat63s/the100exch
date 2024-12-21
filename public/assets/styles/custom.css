@@ -2,13 +2,12 @@
   height: 40px;
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .header.sticky {
     position: fixed;
     background-color: #000;
     top: 0px;
-    z-index: 1000; 
+    z-index: 1000;
     width: 100%;
   }
   .header .logoBox {
@@ -43,4 +42,16 @@
     display: flex !important;
     flex-direction: column;
   }
+
+}
+
+
+
+
+@media (max-width: 425px) {
+  .footer .policy-link {
+    /* border: 1px solid; */
+    width: 300px;
+  }
+  
 }
