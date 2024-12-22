@@ -452,7 +452,7 @@ export default function Header() {
             <ul _ngcontent-mlh-c13 className="menu" id="tabMenu">
               <li _ngcontent-mlh-c13 className="ng-star-inserted">
                 <Link
-                  to=""
+                  to="/"
                   _ngcontent-mlh-c13
                   id="menu_InPlay"
                   className="select"
@@ -461,7 +461,7 @@ export default function Header() {
                 </Link>
               </li>
               <li _ngcontent-mlh-c13 className="ng-star-inserted">
-                <Link to="" _ngcontent-mlh-c13 id="menu_InPlay">
+                <Link to="/sports" _ngcontent-mlh-c13 id="menu_InPlay">
                   In- Play
                 </Link>
               </li>
