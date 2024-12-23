@@ -1,5 +1,4 @@
 import React from "react";
-import Layout from "../components/layout/Layout";
 import home_banner from "../images/362.png";
 import banner_sports from "../images/banner_sports.png";
 import banner_casino from "../images/banner_casino.png";
@@ -8,308 +7,267 @@ import ezugi from "../images/ezugi.png";
 import aesexy from "../images/aesexy.png";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 export default function Home() {
   return (
-    <Layout>
+    <div>
+      <Header />
       {/* dynamic content */}
-
-      <div>
-        <div _ngcontent-mlh-c6 className="full-wrap">
-          <div
+      <div _ngcontent-mlh-c6 className="full-wrap">
+        <div
+          _ngcontent-mlh-c6
+          className="col-center gamehall"
+          id="centerColumn"
+        >
+          <app-d4-announcment
             _ngcontent-mlh-c6
-            className="col-center gamehall"
-            id="centerColumn"
-          >
-            <app-d4-announcment _ngcontent-mlh-c6 _nghost-mlh-c14>
-              {/**/}
-            </app-d4-announcment>
-            <div _ngcontent-mlh-c6 className="over-wrap" id="overWrap">
-              {/**/}
-              {/**/}
-              <div
-                _ngcontent-mlh-c6
-                className="promo-banner-wrap active ng-star-inserted"
-                id="promoteWrap"
-              >
-                <div _ngcontent-mlh-c6 className="promo-banner">
-                  <ul _ngcontent-mlh-c6 className="slides">
-                    <li
-                      _ngcontent-mlh-c6
-                      className="banner"
-                      style={{ display: "block" }}
-                    >
-                      <Link to="" _ngcontent-mlh-c6>
-                        <img _ngcontent-mlh-c6 alt="" src={home_banner} />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div _ngcontent-mlh-c6 className="promo-banner-loading" />
+            _nghost-mlh-c14
+          ></app-d4-announcment>
+          <div _ngcontent-mlh-c6 className="over-wrap" id="overWrap">
+            <div
+              _ngcontent-mlh-c6
+              className="promo-banner-wrap active ng-star-inserted"
+              id="promoteWrap"
+            >
+              <div _ngcontent-mlh-c6 className="promo-banner">
+                <ul _ngcontent-mlh-c6 className="slides">
+                  <li
+                    _ngcontent-mlh-c6
+                    className="banner"
+                    style={{ display: "block" }}
+                  >
+                    <Link to="" _ngcontent-mlh-c6>
+                      <img _ngcontent-mlh-c6 alt="" src={home_banner} />
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <div _ngcontent-mlh-c6 className="homeCasino">
-                <div _ngcontent-mlh-c6 className="gamehall-wrap-simple">
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    neua="InPlay Banner"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <dl _ngcontent-mlh-c6 className="on_live" id="onLiveBoard">
-                      <dt _ngcontent-mlh-c6>
-                        <p _ngcontent-mlh-c6 className="live_icon">
-                          <span _ngcontent-mlh-c6 /> LIVE
-                        </p>
-                      </dt>
-                      <dd _ngcontent-mlh-c6 id="onLiveCount_CRICKET">
-                        <p _ngcontent-mlh-c6>Cricket</p>
-                        <span _ngcontent-mlh-c6>9 </span>
-                      </dd>
-                      <dd _ngcontent-mlh-c6 id="onLiveCount_SOCCER">
-                        <p _ngcontent-mlh-c6>Soccer</p>
-                        <span _ngcontent-mlh-c6 id="count">
-                          9
-                        </span>
-                      </dd>
-                      <dd _ngcontent-mlh-c6 id="onLiveCount_TENNIS">
-                        <p _ngcontent-mlh-c6>Tennis</p>
-                        <span _ngcontent-mlh-c6 id="count">
-                          0
-                        </span>
-                      </dd>
-                      {/**/}
-                      <dd
-                        _ngcontent-mlh-c6
-                        id="onLiveCount_KABADDI"
-                        className="ng-star-inserted"
-                      >
-                        <p _ngcontent-mlh-c6>Kabaddi</p>
-                        <span _ngcontent-mlh-c6 id="count">
-                          0
-                        </span>
-                      </dd>
-                    </dl>
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Sports</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      alt=""
-                      draggable="false"
-                      src={banner_sports}
-                    />
-                  </Link>
-                  {/**/}
-                  {/**/}
-                  {/**/}
-                  {/**/}
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    neua="Casino Banner"
-                    style={{ cursor: "pointer" }}
-                    className="ng-star-inserted"
-                  >
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Live Casino</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      alt=""
-                      draggable="false"
-                      src={banner_casino}
-                    />
-                  </Link>
-                  {/**/}
-                  {/**/}
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="EVO Banner"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Evo</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      alt=""
-                      draggable="false"
-                      src={evolution}
-                    />
-                  </Link>
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="EVO Banner"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Ezugi</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      alt=""
-                      draggable="false"
-                      src={ezugi}
-                    />
-                  </Link>
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="EVO Banner"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Ae Sexy</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      alt=""
-                      draggable="false"
-                      src={aesexy}
-                    />
-                  </Link>
+              <div _ngcontent-mlh-c6 className="promo-banner-loading" />
+            </div>
+            <div _ngcontent-mlh-c6 className="homeCasino">
+              <div _ngcontent-mlh-c6 className="gamehall-wrap-simple">
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  neua="InPlay Banner"
+                  style={{ cursor: "pointer" }}
+                >
+                  <dl _ngcontent-mlh-c6 className="on_live" id="onLiveBoard">
+                    <dt _ngcontent-mlh-c6>
+                      <p _ngcontent-mlh-c6 className="live_icon">
+                        <span _ngcontent-mlh-c6 /> LIVE
+                      </p>
+                    </dt>
+                    <dd _ngcontent-mlh-c6 id="onLiveCount_CRICKET">
+                      <p _ngcontent-mlh-c6>Cricket</p>
+                      <span _ngcontent-mlh-c6>9 </span>
+                    </dd>
+                    <dd _ngcontent-mlh-c6 id="onLiveCount_SOCCER">
+                      <p _ngcontent-mlh-c6>Soccer</p>
+                      <span _ngcontent-mlh-c6 id="count">
+                        9
+                      </span>
+                    </dd>
+                    <dd _ngcontent-mlh-c6 id="onLiveCount_TENNIS">
+                      <p _ngcontent-mlh-c6>Tennis</p>
+                      <span _ngcontent-mlh-c6 id="count">
+                        0
+                      </span>
+                    </dd>
 
-                  <Link
-                    to=""
-                    _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Teenpatti</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
+                    <dd
                       _ngcontent-mlh-c6
-                      applazyload
-                      className="image is-loaded"
-                      src="./the100exch_files/72"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                  <Link
-                    to=""
+                      id="onLiveCount_KABADDI"
+                      className="ng-star-inserted"
+                    >
+                      <p _ngcontent-mlh-c6>Kabaddi</p>
+                      <span _ngcontent-mlh-c6 id="count">
+                        0
+                      </span>
+                    </dd>
+                  </dl>
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Sports</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img
                     _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    {/**/}
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Andar Bahar</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      applazyload
-                      className="image"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                  <Link
-                    to=""
+                    alt=""
+                    draggable="false"
+                    src={banner_sports}
+                  />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  neua="Casino Banner"
+                  style={{ cursor: "pointer" }}
+                  className="ng-star-inserted"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Live Casino</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img
                     _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    {/**/}
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Dragon &amp; Tiger</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      applazyload
-                      className="image"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                  <Link
-                    to=""
+                    alt=""
+                    draggable="false"
+                    src={banner_casino}
+                  />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="EVO Banner"
+                  style={{ cursor: "pointer" }}
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Evo</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img
                     _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    {/**/}
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Dice</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      applazyload
-                      className="image"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                  <Link
-                    to=""
+                    alt=""
+                    draggable="false"
+                    src={evolution}
+                  />
+                </Link>
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="EVO Banner"
+                  style={{ cursor: "pointer" }}
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Ezugi</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 alt="" draggable="false" src={ezugi} />
+                </Link>
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="EVO Banner"
+                  style={{ cursor: "pointer" }}
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Ae Sexy</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img
                     _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    {/**/}
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>7 Up-down</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      applazyload
-                      className="image"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                  <Link
-                    to=""
+                    alt=""
+                    draggable="false"
+                    src={aesexy}
+                  />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Teenpatti</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img
                     _ngcontent-mlh-c6
-                    className="entrance-half ng-star-inserted"
-                    neua="32Cards Banner"
-                    style={{ cursor: "pointer" }}
-                    id="Jili"
-                  >
-                    {/**/}
-                    <dl _ngcontent-mlh-c6 className="entrance-title">
-                      <dt _ngcontent-mlh-c6>Lucky Number</dt>
-                      <dd _ngcontent-mlh-c6>Play Now</dd>
-                    </dl>
-                    <img
-                      _ngcontent-mlh-c6
-                      applazyload
-                      className="image"
-                      alt=""
-                    />
-                  </Link>
-                  {/**/}
-                </div>
+                    applazyload
+                    className="image is-loaded"
+                    src="./the100exch_files/72"
+                    alt=""
+                  />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Andar Bahar</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 applazyload className="image" alt="" />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Dragon &amp; Tiger</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 applazyload className="image" alt="" />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Dice</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 applazyload className="image" alt="" />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>7 Up-down</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 applazyload className="image" alt="" />
+                </Link>
+
+                <Link
+                  to=""
+                  _ngcontent-mlh-c6
+                  className="entrance-half ng-star-inserted"
+                  neua="32Cards Banner"
+                  style={{ cursor: "pointer" }}
+                  id="Jili"
+                >
+                  <dl _ngcontent-mlh-c6 className="entrance-title">
+                    <dt _ngcontent-mlh-c6>Lucky Number</dt>
+                    <dd _ngcontent-mlh-c6>Play Now</dd>
+                  </dl>
+                  <img _ngcontent-mlh-c6 applazyload className="image" alt="" />
+                </Link>
               </div>
             </div>
-            {/**/}
-            {/* <app-d4-footer
+          </div>
+
+          {/* <app-d4-footer
               _ngcontent-mlh-c6
               _nghost-mlh-c15
               className="ng-star-inserted"
@@ -361,11 +319,10 @@ export default function Home() {
                 </ul>
               </div>
             </app-d4-footer> */}
-          </div>
         </div>
-        {/**/}
+      </div>
 
-        {/* <app-multiple-window _ngcontent-mlh-c6 _nghost-mlh-c17>
+      {/* <app-multiple-window _ngcontent-mlh-c6 _nghost-mlh-c17>
           <div
             _ngcontent-mlh-c17
             aria-hidden="true"
@@ -409,7 +366,7 @@ export default function Home() {
             </div>
           </div>
         </app-multiple-window> */}
-        {/* <app-coming-soon _ngcontent-mlh-c6 _nghost-mlh-c18>
+      {/* <app-coming-soon _ngcontent-mlh-c6 _nghost-mlh-c18>
           <div
             _ngcontent-mlh-c18
             aria-labelledby="myModalLabel"
@@ -455,7 +412,7 @@ export default function Home() {
             </div>
           </div>
         </app-coming-soon> */}
-        {/* <app-low-bal-currency-info _ngcontent-mlh-c6 _nghost-mlh-c19>
+      {/* <app-low-bal-currency-info _ngcontent-mlh-c6 _nghost-mlh-c19>
           <div
             _ngcontent-mlh-c19
             aria-hidden="true"
@@ -697,9 +654,9 @@ export default function Home() {
             </div>
           </div>
         </app-low-bal-currency-info> */}
-        {/* <app-social-icon _ngcontent-mlh-c6 _nghost-mlh-c20>
+      {/* <app-social-icon _ngcontent-mlh-c6 _nghost-mlh-c20>
         </app-social-icon>         */}
-        {/* <app-toastr _ngcontent-mlh-c0 _nghost-mlh-c1>
+      {/* <app-toastr _ngcontent-mlh-c0 _nghost-mlh-c1>
           <div
             _ngcontent-mlh-c1
             aria-hidden="true"
@@ -761,7 +718,7 @@ export default function Home() {
             </span>
           </div>
         </app-toastr> */}
-        {/* <div
+      {/* <div
           _ngcontent-mlh-c0
           aria-hidden="true"
           aria-labelledby="admin-add-user"
@@ -794,8 +751,7 @@ export default function Home() {
           </div>
         </div> */}
 
-        <Footer />
-      </div>
-    </Layout>
+      <Footer />
+    </div>
   );
 }

@@ -1,6 +1,70 @@
 .header .logoBox {
   height: 40px;
 }
+.account-wrap .main-wallet #accountCredit {
+  color: #ffb80c;
+}
+.account-wrap .fa-bell {
+  font-size: 20px;
+  color: #fff;
+  padding-top: 2px;
+}
+
+.account-wrap .account {
+  border: 1px solid #000;
+}
+
+.account-wrap .account .username-info {
+  background-position: 0 -1525px;
+  height: 25px;
+  width: 110px;
+  color: #ffb80c;
+}
+
+/* game page */
+.livescro {
+  min-height: calc(100vh - 80px);
+  background-size: 100%;
+  color: #fff;
+  background-color: #000;
+  padding-top: 0;
+}
+
+.headerimg {
+  border-bottom: solid 2px;
+  margin-bottom: 20px;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.game-box {
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px !important;
+  margin-bottom: 20px;
+}
+
+.livescro img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.maibody {
+  border-radius: 4px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 @media (max-width: 800px) {
   .header.sticky {
@@ -14,9 +78,7 @@
     height: 40px !important;
     margin: 0 !important;
   }
-  .search-wrap {
-    display: none;
-  }
+  .search-wrap,
   .headerLang {
     display: none !important;
   }
@@ -43,15 +105,74 @@
     flex-direction: column;
   }
 
+  /* mobile menu */
+  .mobile-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100% !important;
+    background: linear-gradient(-180deg, #243a48 20%, #172732 91%) !important;
+    color: #fff;
+    z-index: 10;
+    display: block;
+    /* border: 1px solid red; */
+  }
+
+  .mobile-nav ul {
+    /* border: 1px solid red; */
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobile-nav ul li {
+    list-style: none;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+  }
+
+  .ui-link:hover {
+    text-decoration: none;
+  }
+
+  .mobile-nav ul li .ui-link {
+    height: 8vh;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 3vw;
+    line-height: 1.5;
+  }
+
+  .mobile-nav ul li .active {
+    padding: 2px;
+    background: linear-gradient(-180deg, #32617f 20%, #1f4258 91%) !important;
+  }
+
+  .mobile-nav ul li .ui-link i {
+    font-size: 5vw;
+  }
+
+  .footer .policy-link {
+    /* border: 1px solid; */
+    padding-bottom: 10vh;
+    width: 600px;
+  }
+
+  /* game page */
+  .container {
+    width: 100%;
+    /* border: 1px solid red; */
+  }
 }
-
-
-
 
 @media (max-width: 425px) {
   .footer .policy-link {
     /* border: 1px solid; */
     width: 300px;
   }
-  
 }

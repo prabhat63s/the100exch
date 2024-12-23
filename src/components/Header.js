@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../images/sky-the100-logo.png";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const [auth, setAuth] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isMyAccountOpen, setMyAccountOpen] = useState(false);
+  const [isNotificationOpen, setNotificationOpen] = useState(false);
+  const [timeZone, setTimeZone] = useState("");
+
+  // Fetch the real-time time zone
+  useEffect(() => {
+    const userTimeZone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1];
+    setTimeZone(userTimeZone);
+  }, []);
+
+  const toggleSettings = () => {
+    setIsSettingsOpen(!isSettingsOpen);
+  };
+  const toggleMyAccount = () => {
+    setMyAccountOpen(!isMyAccountOpen);
+  };
+  const toggleNotification = () => {
+    setNotificationOpen(!isNotificationOpen);
+  };
+
   return (
     <app-root _nghost-mlh-c0 ng-version="8.2.3">
       <router-outlet _ngcontent-mlh-c0 />
@@ -14,12 +36,15 @@ export default function Header() {
       {/* common header */}
       <div _ngcontent-mlh-c13 className="top">
         <div _ngcontent-mlh-c13 className="header full-wrap">
+          {/* logo */}
           <div _ngcontent-mlh-c13 className="logoBox">
             <Link to="/" _ngcontent-mlh-c13>
               <img _ngcontent-mlh-c13 src={logo} alt="" />
             </Link>
           </div>
+          {/* search & ligin */}
           <div _ngcontent-mlh-c13 className="flexRow">
+            {/* search */}
             <div _ngcontent-mlh-c13 id="searchWrap" className="search-wrap">
               <div _ngcontent-mlh-c13 className="searchhh">
                 <ng2-completer
@@ -90,6 +115,7 @@ export default function Header() {
               _ngcontent-mlh-c13
               className="login-wrap logindisplayFlex ng-star-inserted"
             >
+              {/* language */}
               <li _ngcontent-mlh-c13 className="languageLi headerLang">
                 <select _ngcontent-mlh-c13 className="btn-submit">
                   <option
@@ -137,316 +163,974 @@ export default function Header() {
                 </select>
                 <i _ngcontent-mlh-c13 className="fas fa-caret-down" />
               </li>
-              <app-d4-player-header-login _ngcontent-mlh-c13 _nghost-mlh-c23>
-                <form
-                  _ngcontent-mlh-c23
-                  className="errorMessageContrl ng-untouched ng-pristine ng-invalid ng-star-inserted"
-                  noValidate
-                >
-                  <li _ngcontent-mlh-c23>
-                    <i
-                      _ngcontent-mlh-c23
-                      aria-hidden="true"
-                      className="fa fa-user"
-                    />
-                    <input
-                      _ngcontent-mlh-c23
-                      formcontrolname="usernameOrEmail"
-                      id="usernamee"
-                      onfocus="this.removeAttribute('readonly');"
-                      type="email"
-                      defaultValue
-                      readOnly
-                      placeholder="Username"
-                      className="ng-untouched ng-pristine ng-invalid"
-                    />
-                    <p _ngcontent-mlh-c23>
-                      <app-validation-message
-                        _ngcontent-mlh-c23
-                        _nghost-mlh-c35
-                      >
-                        <span
-                          _ngcontent-mlh-c35
-                          className="validation-message"
-                        ></span>
-                      </app-validation-message>
-                    </p>
-                  </li>
-                  <li _ngcontent-mlh-c23>
-                    <input
-                      _ngcontent-mlh-c23
-                      autoComplete="on"
-                      formcontrolname="password"
-                      defaultValue
-                      type="password"
-                      placeholder="Password"
-                      className="ng-untouched ng-pristine ng-invalid"
-                    />
-                    <p _ngcontent-mlh-c23>
-                      <app-validation-message
-                        _ngcontent-mlh-c23
-                        _nghost-mlh-c35
-                      >
-                        <span
-                          _ngcontent-mlh-c35
-                          className="validation-message"
-                        ></span>
-                      </app-validation-message>
-                    </p>
-                    <span
-                      _ngcontent-mlh-c23
-                      className="toggelPass fa fa-fw fa-eye"
-                      toggle="#password-field"
-                    />
-                  </li>
-                  <li _ngcontent-mlh-c23 className="valid-code" />
-                  <li _ngcontent-mlh-c23>
-                    <input
-                      _ngcontent-mlh-c23
-                      id="valid"
-                      name="valid"
-                      type="hidden"
-                      defaultValue="8fd97d9e-ada0-4e48-8714-40ebd8a7af93"
-                    />
-                  </li>
-                  <li _ngcontent-mlh-c23>
-                    <Link
-                      to=""
-                      _ngcontent-mlh-c23
-                      className="btn-login"
-                      id="loginBtn"
-                    >
-                      LOGIN{" "}
-                      <i _ngcontent-mlh-c23 className="fas fa-sign-in-alt" />
-                    </Link>
-                  </li>
-                </form>
 
-                <div
-                  _ngcontent-mlh-c23
-                  className="loginDemo bankingTrue ng-star-inserted"
-                >
-                  <Link to="" _ngcontent-mlh-c23 className="text-underline">
-                    Login With Demo{" "}
-                  </Link>
-                </div>
-                <div
-                  _ngcontent-mlh-c23
-                  aria-hidden="true"
-                  aria-labelledby="myLargeModalLabel"
-                  className="modal fade header_login_modal"
-                  id="logininfo-popupd7"
-                  role="dialog"
-                  tabIndex={-1}
-                >
+              {/* login */}
+              {auth ? (
+                <app-d4-player-header-login _ngcontent-mlh-c13 _nghost-mlh-c23>
+                  <form
+                    _ngcontent-mlh-c23
+                    className="errorMessageContrl ng-untouched ng-pristine ng-invalid ng-star-inserted"
+                    noValidate
+                  >
+                    <li _ngcontent-mlh-c23>
+                      <i
+                        _ngcontent-mlh-c23
+                        aria-hidden="true"
+                        className="fa fa-user"
+                      />
+                      <input
+                        _ngcontent-mlh-c23
+                        formcontrolname="usernameOrEmail"
+                        id="usernamee"
+                        onfocus="this.removeAttribute('readonly');"
+                        type="email"
+                        defaultValue
+                        readOnly
+                        placeholder="Username"
+                        className="ng-untouched ng-pristine ng-invalid"
+                      />
+                      <p _ngcontent-mlh-c23>
+                        <app-validation-message
+                          _ngcontent-mlh-c23
+                          _nghost-mlh-c35
+                        >
+                          <span
+                            _ngcontent-mlh-c35
+                            className="validation-message"
+                          ></span>
+                        </app-validation-message>
+                      </p>
+                    </li>
+                    <li _ngcontent-mlh-c23>
+                      <input
+                        _ngcontent-mlh-c23
+                        autoComplete="on"
+                        formcontrolname="password"
+                        defaultValue
+                        type="password"
+                        placeholder="Password"
+                        className="ng-untouched ng-pristine ng-invalid"
+                      />
+                      <p _ngcontent-mlh-c23>
+                        <app-validation-message
+                          _ngcontent-mlh-c23
+                          _nghost-mlh-c35
+                        >
+                          <span
+                            _ngcontent-mlh-c35
+                            className="validation-message"
+                          ></span>
+                        </app-validation-message>
+                      </p>
+                      <span
+                        _ngcontent-mlh-c23
+                        className="toggelPass fa fa-fw fa-eye"
+                        toggle="#password-field"
+                      />
+                    </li>
+                    <li _ngcontent-mlh-c23 className="valid-code" />
+                    <li _ngcontent-mlh-c23>
+                      <input
+                        _ngcontent-mlh-c23
+                        id="valid"
+                        name="valid"
+                        type="hidden"
+                        defaultValue="8fd97d9e-ada0-4e48-8714-40ebd8a7af93"
+                      />
+                    </li>
+                    <li _ngcontent-mlh-c23>
+                      <Link
+                        to=""
+                        _ngcontent-mlh-c23
+                        className="btn-login"
+                        id="loginBtn"
+                      >
+                        LOGIN{" "}
+                        <i _ngcontent-mlh-c23 className="fas fa-sign-in-alt" />
+                      </Link>
+                    </li>
+                  </form>
+
                   <div
                     _ngcontent-mlh-c23
-                    className="modal-dialog"
-                    role="document"
+                    className="loginDemo bankingTrue ng-star-inserted"
+                  >
+                    <Link to="" _ngcontent-mlh-c23 className="text-underline">
+                      Login With Demo{" "}
+                    </Link>
+                  </div>
+
+                  <div
+                    _ngcontent-mlh-c23
+                    aria-hidden="true"
+                    aria-labelledby="myLargeModalLabel"
+                    className="modal fade header_login_modal"
+                    id="logininfo-popupd7"
+                    role="dialog"
+                    tabIndex={-1}
                   >
                     <div
                       _ngcontent-mlh-c23
-                      className="modal-content login-popup-content"
+                      className="modal-dialog"
+                      role="document"
                     >
-                      <div _ngcontent-mlh-c23 className="modal-header">
-                        <button
-                          _ngcontent-mlh-c23
-                          aria-label="Close"
-                          className="close"
-                          data-dismiss="modal"
-                          type="button"
-                        >
-                          <span
-                            _ngcontent-mlh-c23
-                            aria-hidden="true"
-                            className="fa fa-times"
-                          />
-                        </button>
-                      </div>
-                      <div _ngcontent-mlh-c23 className="modal-body bodypa">
-                        <h5 _ngcontent-mlh-c23 className="modal-title">
-                          Non-Gambling Territories.{" "}
-                        </h5>
-                        <div _ngcontent-mlh-c23 className="text2">
-                          Connecting to our site from non gambling countries, it
-                          will be User's responsibility to ensure that their use
-                          of the service is lawful.
-                        </div>
-                        <div _ngcontent-mlh-c23 className="confirm-text">
-                          <div
-                            _ngcontent-mlh-c23
-                            className="text1 text-confirm-bold"
-                          >
-                            Underage gambling is prohibited.
-                          </div>
-                          <hr _ngcontent-mlh-c23 className="confirm-line" />
-                          <div _ngcontent-mlh-c23 className="text2">
-                            Please confirm if you are{" "}
-                            <span
-                              _ngcontent-mlh-c23
-                              className="text-confirm-bold"
-                            >
-                              18 years old and above
-                            </span>{" "}
-                            as of today.
-                          </div>
-                        </div>
-                        <div _ngcontent-mlh-c23 className="confirm-button">
+                      <div
+                        _ngcontent-mlh-c23
+                        className="modal-content login-popup-content"
+                      >
+                        <div _ngcontent-mlh-c23 className="modal-header">
                           <button
                             _ngcontent-mlh-c23
-                            className="btn-verification btn-confirm"
+                            aria-label="Close"
+                            className="close"
                             data-dismiss="modal"
+                            type="button"
                           >
-                            Confirm
+                            <span
+                              _ngcontent-mlh-c23
+                              aria-hidden="true"
+                              className="fa fa-times"
+                            />
                           </button>
-                          <Link
-                            to=""
-                            _ngcontent-mlh-c23
-                            className="btn-verification border-btn"
-                            href="https://www.google.com/"
-                          >
-                            Exit
-                          </Link>
+                        </div>
+                        <div _ngcontent-mlh-c23 className="modal-body bodypa">
+                          <h5 _ngcontent-mlh-c23 className="modal-title">
+                            Non-Gambling Territories.{" "}
+                          </h5>
+                          <div _ngcontent-mlh-c23 className="text2">
+                            Connecting to our site from non gambling countries,
+                            it will be User's responsibility to ensure that
+                            their use of the service is lawful.
+                          </div>
+                          <div _ngcontent-mlh-c23 className="confirm-text">
+                            <div
+                              _ngcontent-mlh-c23
+                              className="text1 text-confirm-bold"
+                            >
+                              Underage gambling is prohibited.
+                            </div>
+                            <hr _ngcontent-mlh-c23 className="confirm-line" />
+                            <div _ngcontent-mlh-c23 className="text2">
+                              Please confirm if you are{" "}
+                              <span
+                                _ngcontent-mlh-c23
+                                className="text-confirm-bold"
+                              >
+                                18 years old and above
+                              </span>{" "}
+                              as of today.
+                            </div>
+                          </div>
+                          <div _ngcontent-mlh-c23 className="confirm-button">
+                            <button
+                              _ngcontent-mlh-c23
+                              className="btn-verification btn-confirm"
+                              data-dismiss="modal"
+                            >
+                              Confirm
+                            </button>
+                            <Link
+                              to=""
+                              _ngcontent-mlh-c23
+                              className="btn-verification border-btn"
+                              href="https://www.google.com/"
+                            >
+                              Exit
+                            </Link>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <app-playerinfo-forgot _ngcontent-mlh-c23 _nghost-mlh-c44>
-                  <div
-                    _ngcontent-mlh-c44
-                    role="dialog"
-                    tabIndex={-1}
-                    className="skin-1"
-                  >
+                  <app-playerinfo-forgot _ngcontent-mlh-c23 _nghost-mlh-c44>
                     <div
                       _ngcontent-mlh-c44
-                      aria-hidden="true"
-                      aria-labelledby="exampleModalLabel"
-                      className="modal fade"
-                      id="forgotInfo"
                       role="dialog"
                       tabIndex={-1}
+                      className="skin-1"
                     >
                       <div
                         _ngcontent-mlh-c44
-                        className="modal-dialog formddmain2"
-                        role="document"
+                        aria-hidden="true"
+                        aria-labelledby="exampleModalLabel"
+                        className="modal fade"
+                        id="forgotInfo"
+                        role="dialog"
+                        tabIndex={-1}
                       >
                         <div
                           _ngcontent-mlh-c44
-                          className="login-panel forgetInfopass"
+                          className="modal-dialog formddmain2"
+                          role="document"
                         >
-                          <div _ngcontent-mlh-c44 className="main login">
-                            <div
-                              _ngcontent-mlh-c44
-                              className="downline-heading"
-                            >
-                              <button
+                          <div
+                            _ngcontent-mlh-c44
+                            className="login-panel forgetInfopass"
+                          >
+                            <div _ngcontent-mlh-c44 className="main login">
+                              <div
                                 _ngcontent-mlh-c44
-                                aria-label="Close"
-                                className="close ng-star-inserted"
-                                data-dismiss="modal"
-                                type="button"
+                                className="downline-heading"
                               >
-                                <span _ngcontent-mlh-c44 aria-hidden="true">
-                                  ×
-                                </span>
-                              </button>
-                            </div>
-                            <div
-                              _ngcontent-mlh-c44
-                              className="icon-login forgetPassHeadin"
-                            >
-                              <h2 _ngcontent-mlh-c44>
-                                Forgot Username/Password
-                              </h2>
-                            </div>
-                            <div _ngcontent-mlh-c44 className="formdd2">
-                              <form
+                                <button
+                                  _ngcontent-mlh-c44
+                                  aria-label="Close"
+                                  className="close ng-star-inserted"
+                                  data-dismiss="modal"
+                                  type="button"
+                                >
+                                  <span _ngcontent-mlh-c44 aria-hidden="true">
+                                    ×
+                                  </span>
+                                </button>
+                              </div>
+                              <div
                                 _ngcontent-mlh-c44
-                                className="formmconform ng-untouched ng-pristine ng-invalid"
-                                noValidate
+                                className="icon-login forgetPassHeadin"
                               >
-                                <div _ngcontent-mlh-c44 className="form-group">
+                                <h2 _ngcontent-mlh-c44>
+                                  Forgot Username/Password
+                                </h2>
+                              </div>
+                              <div _ngcontent-mlh-c44 className="formdd2">
+                                <form
+                                  _ngcontent-mlh-c44
+                                  className="formmconform ng-untouched ng-pristine ng-invalid"
+                                  noValidate
+                                >
                                   <div
                                     _ngcontent-mlh-c44
-                                    className="form-group forget-enterNo ng-star-inserted"
+                                    className="form-group"
                                   >
                                     <div
                                       _ngcontent-mlh-c44
-                                      className="col-sm-5 pl-0"
+                                      className="form-group forget-enterNo ng-star-inserted"
                                     >
-                                      <select
+                                      <div
                                         _ngcontent-mlh-c44
-                                        className="form-control countryCode ng-untouched ng-pristine ng-valid"
-                                        formcontrolname="countryCode"
+                                        className="col-sm-5 pl-0"
                                       >
-                                        <option
+                                        <select
                                           _ngcontent-mlh-c44
-                                          value="0: +91"
-                                          className="ng-star-inserted"
+                                          className="form-control countryCode ng-untouched ng-pristine ng-valid"
+                                          formcontrolname="countryCode"
                                         >
-                                          IN(+91)
-                                        </option>
-                                      </select>
-                                    </div>
-                                    <div
-                                      _ngcontent-mlh-c44
-                                      className="col-sm-7 pr-0"
-                                    >
-                                      <input
+                                          <option
+                                            _ngcontent-mlh-c44
+                                            value="0: +91"
+                                            className="ng-star-inserted"
+                                          >
+                                            IN(+91)
+                                          </option>
+                                        </select>
+                                      </div>
+                                      <div
                                         _ngcontent-mlh-c44
-                                        autoComplete="off"
-                                        className="form-control ng-untouched ng-pristine ng-invalid"
-                                        formcontrolname="phoneNo"
-                                        id="phoneNo"
-                                        maxLength={10}
-                                        onfocus="this.removeAttribute('readonly');"
-                                        onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
-                                        type="tel"
-                                        readOnly
-                                        placeholder="Phone no."
-                                      />
-                                      <app-validation-message
-                                        _ngcontent-mlh-c44
-                                        _nghost-mlh-c35
+                                        className="col-sm-7 pr-0"
                                       >
-                                        <span
-                                          _ngcontent-mlh-c35
-                                          className="validation-message"
-                                        ></span>
-                                      </app-validation-message>
+                                        <input
+                                          _ngcontent-mlh-c44
+                                          autoComplete="off"
+                                          className="form-control ng-untouched ng-pristine ng-invalid"
+                                          formcontrolname="phoneNo"
+                                          id="phoneNo"
+                                          maxLength={10}
+                                          onfocus="this.removeAttribute('readonly');"
+                                          onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                                          type="tel"
+                                          readOnly
+                                          placeholder="Phone no."
+                                        />
+                                        <app-validation-message
+                                          _ngcontent-mlh-c44
+                                          _nghost-mlh-c35
+                                        >
+                                          <span
+                                            _ngcontent-mlh-c35
+                                            className="validation-message"
+                                          ></span>
+                                        </app-validation-message>
+                                      </div>
                                     </div>
+                                    <span _ngcontent-mlh-c44 />
                                   </div>
-                                  <span _ngcontent-mlh-c44 />
-                                </div>
 
-                                <div
-                                  _ngcontent-mlh-c44
-                                  className="forget-password text-center ng-star-inserted"
-                                  style={{ marginTop: 20 }}
-                                >
-                                  <button
+                                  <div
                                     _ngcontent-mlh-c44
-                                    className="apl-btn apl-btn-large btn-login"
-                                    type="button"
+                                    className="forget-password text-center ng-star-inserted"
+                                    style={{ marginTop: 20 }}
                                   >
-                                    Send Otp
-                                  </button>
-                                </div>
-                              </form>
+                                    <button
+                                      _ngcontent-mlh-c44
+                                      className="apl-btn apl-btn-large btn-login"
+                                      type="button"
+                                    >
+                                      Send Otp
+                                    </button>
+                                  </div>
+                                </form>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </app-playerinfo-forgot>
-              </app-d4-player-header-login>
+                  </app-playerinfo-forgot>
+                </app-d4-player-header-login>
+              ) : (
+                <ul
+                  _ngcontent-jsx-c13
+                  className="account-wrap"
+                  style={{ display: "flex", alignItems: "flex-start" }}
+                >
+                  <li _ngcontent-jsx-c13 className="main-wallet">
+                    <Link
+                      to=""
+                      _ngcontent-jsx-c13
+                      className="a-wallet"
+                      id="multiWallet"
+                    >
+                      <ul _ngcontent-jsx-c13 id="accountCredit">
+                        <li _ngcontent-jsx-c13>
+                          <span _ngcontent-jsx-c13>Main Balance </span>
+
+                          <span _ngcontent-jsx-c13>0.82</span>
+                        </li>
+                        <li _ngcontent-jsx-c13>
+                          <span _ngcontent-jsx-c13>Exposure </span>
+                          <span _ngcontent-jsx-c13 id="totalExposure">
+                            {" "}
+                            985.00
+                          </span>
+                        </li>
+                      </ul>
+                      <p
+                        _ngcontent-jsx-c13
+                        className="loading-bar"
+                        id="menuRefreshLoading"
+                        style={{ display: "none" }}
+                      />
+                    </Link>
+                  </li>
+
+                  <li _ngcontent-jsx-c13>
+                    <app-notification-pop _ngcontent-jsx-c13 _nghost-jsx-c22>
+                      <div
+                        _ngcontent-jsx-c22
+                        className="notificationCol d8-notification"
+                      >
+                        <Link
+                          to=""
+                          _ngcontent-jsx-c22
+                          // aria-expanded="false"
+                          // aria-haspopup="true"
+                          className="bellIcon"
+                          // data-toggle="dropdown"
+                          id="dropdownMenuButton"
+                          onClick={toggleNotification}
+                        >
+                          <i
+                            _ngcontent-jsx-c22
+                            aria-hidden="true"
+                            className="fa fa-bell"
+                          />
+                        </Link>
+                        {isNotificationOpen && (
+                          <div
+                            _ngcontent-jsx-c22
+                            aria-labelledby="dropdownMenuButton"
+                            className="dropdown-menu"
+                          >
+                            <h3 _ngcontent-jsx-c22>Notifications</h3>
+                            <ul _ngcontent-jsx-c22>
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Melbourne Renegades V Perth Scorchers
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  3 hours ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  New Zealand Women V Australia Women
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  11 hours ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  South Africa V Pakistan
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  18 hours ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Cfr Cluj V Otelul Galati
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Hannover V Hertha Berlin
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  India Women V West Indies Women
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Brisbane Heat V Adelaide Strikers
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Act Meteors V Queensland Fire
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Osasuna V Athletic Bilbao
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Jo Fonseca V Luca Van Assche
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  United Arab Emirates V Kuwait
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  1 day ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Abl Stallions V Dolphins
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Zimbabwe V Afghanistan
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Sydney Thunder V Sydney Sixers
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Hyderabad V Nagaland
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Baroda V Tripura
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Mumbai V Karnataka
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Pondicherry V Saurashtra
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Bengal V Delhi
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+
+                              <li _ngcontent-jsx-c22 className="eName">
+                                <strong _ngcontent-jsx-c22>
+                                  Sudurpaschim Royals V Janakpur Bolts
+                                </strong>
+                                <small _ngcontent-jsx-c22 className="dText">
+                                  2 days ago
+                                </small>
+                              </li>
+                            </ul>
+                            <button _ngcontent-jsx-c22 className="viewAll">
+                              View All Notifications
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      {/* <app-show-notification _ngcontent-jsx-c22 _nghost-jsx-c45>
+                        <div
+                          _ngcontent-jsx-c45
+                          aria-hidden="true"
+                          aria-labelledby="admin-add-user"
+                          className="modal fade transction-modal"
+                          data-backdrop="static"
+                          data-keyboard="false"
+                          id="show-txn-notification"
+                          role="dialog"
+                          tabIndex={-1}
+                        >
+                          <div
+                            _ngcontent-jsx-c45
+                            className="modal-dialog"
+                            role="document"
+                          >
+                            <div _ngcontent-jsx-c45 className="modal-content">
+                              <div _ngcontent-jsx-c45 className="modal-header">
+                                <button
+                                  _ngcontent-jsx-c45
+                                  aria-label="Close"
+                                  className="close"
+                                  data-dismiss="modal"
+                                  type="button"
+                                >
+                                  <span _ngcontent-jsx-c45 aria-hidden="true">
+                                    ×
+                                  </span>
+                                </button>
+
+                                <h4
+                                  _ngcontent-jsx-c45
+                                  className="modal-title"
+                                  id="myModalLabel"
+                                />
+                              </div>
+                              <div
+                                _ngcontent-jsx-c45
+                                className="modal-body"
+                              ></div>
+                              <div _ngcontent-jsx-c45 className="footer-modal">
+                                <div _ngcontent-jsx-c45>
+                                  <button
+                                    _ngcontent-jsx-c45
+                                    className="view_bet"
+                                    data-dismiss="modal"
+                                  >
+                                    View Transaction
+                                  </button>
+                                </div>
+                                <div _ngcontent-jsx-c45>
+                                  <button
+                                    _ngcontent-jsx-c45
+                                    className="close-btn"
+                                    data-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <app-massage-viewer _ngcontent-jsx-c45 _nghost-jsx-c47>
+                          <div _ngcontent-jsx-c47 id="massage-viewer">
+                            <span
+                              _ngcontent-jsx-c47
+                              className="close"
+                              id="closebtn"
+                            >
+                              <i
+                                _ngcontent-jsx-c47
+                                aria-hidden="true"
+                                className="fa fa-times"
+                              />
+                            </span>
+                            <div _ngcontent-jsx-c47 className="pmButton">
+                              <button
+                                _ngcontent-jsx-c47
+                                className=" zoom-out btn btn-default"
+                                id="mszminus"
+                                type="button"
+                              >
+                                <i
+                                  _ngcontent-jsx-c47
+                                  aria-hidden="true"
+                                  className="fa fa-search-minus"
+                                />
+                              </button>
+                              <button
+                                _ngcontent-jsx-c47
+                                className=" zoom-in btn btn-default"
+                                id="mszplus"
+                                type="button"
+                              >
+                                <i
+                                  _ngcontent-jsx-c47
+                                  aria-hidden="true"
+                                  className="fa fa-search-plus"
+                                />
+                              </button>
+                            </div>
+                            <div _ngcontent-jsx-c47 className="mszcontainer">
+                              <div
+                                _ngcontent-jsx-c47
+                                className="modal-content"
+                                style={{ overflow: "auto" }}
+                              >
+                                <img
+                                  _ngcontent-jsx-c47
+                                  id="mszfull-image"
+                                  src
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </app-massage-viewer>
+                        <div
+                          _ngcontent-jsx-c45
+                          aria-hidden="true"
+                          aria-labelledby="admin-add-user"
+                          className="modal fade transction-modal"
+                          data-backdrop="static"
+                          data-keyboard="false"
+                          id="bonus-notification"
+                          role="dialog"
+                          tabIndex={-1}
+                        >
+                          <div
+                            _ngcontent-jsx-c45
+                            className="modal-dialog"
+                            role="document"
+                          >
+                            <div _ngcontent-jsx-c45 className="modal-content">
+                              <div
+                                _ngcontent-jsx-c45
+                                className="modal-header display-block-d8"
+                              >
+                                <button
+                                  _ngcontent-jsx-c45
+                                  aria-label="Close"
+                                  className="close"
+                                  data-dismiss="modal"
+                                  type="button"
+                                >
+                                  <span _ngcontent-jsx-c45 aria-hidden="true">
+                                    ×
+                                  </span>
+                                </button>
+                                <h4 _ngcontent-jsx-c45 className="modal-title">
+                                  Reminder
+                                </h4>
+                              </div>
+                              <div
+                                _ngcontent-jsx-c45
+                                className="modal-body"
+                              ></div>
+                              <div _ngcontent-jsx-c45 className="footer-modal">
+                                <div _ngcontent-jsx-c45>
+                                  <button
+                                    _ngcontent-jsx-c45
+                                    className="view_bet"
+                                    data-dismiss="modal"
+                                  >
+                                    View Rolling
+                                  </button>
+                                </div>
+                                <div _ngcontent-jsx-c45>
+                                  <button
+                                    _ngcontent-jsx-c45
+                                    className="close-btn"
+                                    data-dismiss="modal"
+                                  >
+                                    Close
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </app-show-notification> */}
+                      {/* <app-notification-details
+                        _ngcontent-jsx-c22
+                        _nghost-jsx-c46
+                      >
+                        <div
+                          _ngcontent-jsx-c46
+                          aria-hidden="true"
+                          aria-labelledby="admin-add-user"
+                          className="modal fade"
+                          id="notification-details"
+                          role="dialog"
+                          tabIndex={-1}
+                        >
+                          <div
+                            _ngcontent-jsx-c46
+                            className="modal-dialog"
+                            role="document"
+                          >
+                            <div _ngcontent-jsx-c46 className="modal-content">
+                              <div _ngcontent-jsx-c46 className="modal-header">
+                                <button
+                                  _ngcontent-jsx-c46
+                                  aria-label="Close"
+                                  className="close"
+                                  data-dismiss="modal"
+                                  type="button"
+                                >
+                                  <span _ngcontent-jsx-c46 aria-hidden="true">
+                                    ×
+                                  </span>
+                                </button>
+                                <h4
+                                  _ngcontent-jsx-c46
+                                  className="modal-title ss"
+                                  id="myModalLabel"
+                                >
+                                  {" "}
+                                </h4>
+                              </div>
+                              <div _ngcontent-jsx-c46 className="modal-body">
+                                <table _ngcontent-jsx-c46 className="table">
+                                  <thead
+                                    _ngcontent-jsx-c46
+                                    className="table-header"
+                                  >
+                                    <tr _ngcontent-jsx-c46>
+                                      <th
+                                        _ngcontent-jsx-c46
+                                        style={{ color: "#fff" }}
+                                        width="50%"
+                                      >
+                                        Market Name
+                                      </th>
+                                      <th
+                                        _ngcontent-jsx-c46
+                                        style={{ color: "#fff" }}
+                                        width="50%"
+                                      >
+                                        P/L
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                </table>
+                                <table
+                                  _ngcontent-jsx-c46
+                                  className="table table-striped table-stripedscroll"
+                                  style={{ maxHeight: "55vh" }}
+                                >
+                                  <tbody
+                                    _ngcontent-jsx-c46
+                                    style={{ width: "100%", float: "left" }}
+                                  ></tbody>
+                                </table>
+                                <table _ngcontent-jsx-c46 className="table">
+                                  <tfoot _ngcontent-jsx-c46>
+                                    <tr _ngcontent-jsx-c46>
+                                      <td _ngcontent-jsx-c46 width="25%">
+                                        <span _ngcontent-jsx-c46></span>
+                                      </td>
+                                      <td _ngcontent-jsx-c46 width="25%">
+                                        <button
+                                          _ngcontent-jsx-c46
+                                          className="saveedit saveedit1 "
+                                          data-dismiss="modal"
+                                        >
+                                          view bet
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </app-notification-details> */}
+                    </app-notification-pop>
+                  </li>
+                  {/* my account */}
+                  <li _ngcontent-jsx-c13 className="account">
+                    <Link
+                      to=""
+                      _ngcontent-jsx-c13
+                      aria-expanded={isMyAccountOpen ? "true" : "false"}
+                      className={`username-info ${
+                        isMyAccountOpen ? "" : "collapsed"
+                      }`}
+                      data-target="#user-dropdown"
+                      data-toggle="collapse"
+                      id="accountPopup"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        toggleMyAccount();
+                      }}
+                      style={{ cursor: "pointer" }}
+                    >
+                      My Account
+                    </Link>
+                    <ul
+                      _ngcontent-jsx-c13
+                      className={`collapse ${isMyAccountOpen ? "show" : ""}`}
+                      id="user-dropdown"
+                    >
+                      <li _ngcontent-jsx-c13>
+                        <h4 _ngcontent-jsx-c13>
+                          {" "}
+                          demo3{" "}
+                          <span
+                            _ngcontent-jsx-c13
+                            className="gmt"
+                            title="Time Zone"
+                          >
+                            GMT+5:30
+                          </span>
+                        </h4>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          My Profile{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          Account Statement{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          Bets History{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          Profit &amp; Loss
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          Activity Log{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          balance overview{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link to="" _ngcontent-jsx-c13>
+                          {" "}
+                          Notification History{" "}
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13>
+                        <Link
+                          to=""
+                          _ngcontent-jsx-c13
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                          }}
+                        >
+                          {" "}
+                          Wallet Balance
+                          <span _ngcontent-jsx-c13>0.00</span>
+                        </Link>
+                      </li>
+
+                      <li _ngcontent-jsx-c13 className="logout">
+                        <Link to="" _ngcontent-jsx-c13 id="logout">
+                          LOGOUT{" "}
+                          <i
+                            _ngcontent-jsx-c13
+                            className="fas fa-sign-out-alt"
+                          />
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              )}
             </ul>
           </div>
         </div>
+
+        {/* navigation */}
         <div _ngcontent-mlh-c13 className="menu-wrap">
           <div _ngcontent-mlh-c13 className="full-wrap">
             <ul _ngcontent-mlh-c13 className="menu" id="tabMenu">
@@ -569,7 +1253,10 @@ export default function Header() {
                     to=""
                     _ngcontent-mlh-c24
                     className="setting"
-                    onclick="event.preventDefault();"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      toggleSettings();
+                    }}
                     style={{ cursor: "pointer" }}
                   >
                     Setting{" "}
@@ -580,6 +1267,107 @@ export default function Header() {
                     />
                   </Link>
                 </li>
+                {isSettingsOpen && (
+                  <ul _ngcontent-vps-c34 className="set_pop" id="set_pop">
+                    <div _ngcontent-vps-c34 className="slip_set-pop">
+                      <div
+                        _ngcontent-vps-c34
+                        className="set-content"
+                        id="coinList"
+                      >
+                        <dl
+                          _ngcontent-vps-c34
+                          className="stake-set"
+                          id="stakeSet"
+                        >
+                          <dt _ngcontent-vps-c34>Stake</dt>
+                          {[...Array(6)].map((_, index) => (
+                            <dd _ngcontent-vps-c34 key={index}>
+                              <input
+                                _ngcontent-vps-c34
+                                appblockcopypaste
+                                autoComplete="off"
+                                className="form-control ng-untouched ng-pristine ng-valid"
+                                data-toggle="tooltip"
+                                maxLength={8}
+                                norightclick
+                                positivenumberonly
+                                style={{ cursor: "pointer" }}
+                                title="Value must be greater or equal to 1"
+                                type="text"
+                                id={index}
+                              />
+                            </dd>
+                          ))}
+                        </dl>
+                        <dl _ngcontent-vps-c34 className="odds-set">
+                          <dt _ngcontent-vps-c34>Match Odds</dt>
+                          <dd _ngcontent-vps-c34>
+                            <input
+                              _ngcontent-vps-c34
+                              id="checkbod11"
+                              type="checkbox"
+                            />
+                            <label _ngcontent-vps-c34 htmlFor="fancy_odd">
+                              Accept Any Odds
+                            </label>
+                          </dd>
+                        </dl>
+                        <dl _ngcontent-vps-c34 className="odds-set">
+                          <dt _ngcontent-vps-c34>BookMaker</dt>
+                          <dd _ngcontent-vps-c34>
+                            <input
+                              _ngcontent-vps-c34
+                              id="checkbod22"
+                              type="checkbox"
+                            />
+                            <label _ngcontent-vps-c34 htmlFor="fancy_odd">
+                              Accept Any Odds
+                            </label>
+                          </dd>
+                        </dl>
+                        <dl _ngcontent-vps-c34 className="odds-set">
+                          <dt _ngcontent-vps-c34>FancyBet</dt>
+                          <dd _ngcontent-vps-c34>
+                            <input
+                              _ngcontent-vps-c34
+                              id="checkbod33"
+                              type="checkbox"
+                            />
+                            <label _ngcontent-vps-c34 htmlFor="fancy_odd">
+                              Accept Any Odds
+                            </label>
+                          </dd>
+                        </dl>
+                        <ul _ngcontent-vps-c34 className="btn-wrap">
+                          <li _ngcontent-vps-c34>
+                            <Link
+                              to="/"
+                              _ngcontent-vps-c34
+                              className="btn closeSet"
+                              id="closeSet"
+                              style={{ cursor: "pointer" }}
+                              onClick={() => setIsSettingsOpen(false)} // Close the settings when clicking Cancel
+                            >
+                              Cancel
+                            </Link>
+                          </li>
+                          <li _ngcontent-vps-c34 className="col-send">
+                            <Link
+                              to="/"
+                              _ngcontent-vps-c34
+                              className="btn-send"
+                              id="coinSave"
+                              style={{ cursor: "pointer" }}
+                            >
+                              Save
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </ul>
+                )}
               </ul>
             </app-d4-edit-stack>
           </div>
@@ -1427,7 +2215,8 @@ export default function Header() {
                     </span>
                     <div _ngcontent-mlh-c38 className="forget-div"></div>
                     <dd _ngcontent-mlh-c38>
-                      <Link to=""
+                      <Link
+                        to=""
                         _ngcontent-mlh-c38
                         className="btn-send"
                         id="loginBoxLoginBtn"
@@ -1443,7 +2232,8 @@ export default function Header() {
                       </Link>
                     </dd>
                     <dd _ngcontent-mlh-c38>
-                      <Link to=""
+                      <Link
+                        to=""
                         _ngcontent-mlh-c38
                         className="btn-send demoLogin"
                         style={{ marginTop: 0, cursor: "pointer" }}
@@ -1459,7 +2249,8 @@ export default function Header() {
                     </dd>
                   </dl>
                 </form>
-                <Link to=""
+                <Link
+                  to=""
                   _ngcontent-mlh-c38
                   className="close"
                   data-dismiss="modal"
